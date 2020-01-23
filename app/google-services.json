@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "526894440758",
+    "firebase_url": "https://axis-20.firebaseio.com",
+    "project_id": "axis-20",
+    "storage_bucket": "axis-20.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:526894440758:android:9e13ddb776c28974521397",
+        "android_client_info": {
+          "package_name": "axis.hrishi3331studio.vnit.axis20"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "526894440758-usb8n2em4q4sci99tl0fhn8eid8tmmr4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "axis.hrishi3331studio.vnit.axis20",
+            "certificate_hash": "20c2b8b746e32d5de32080f9c55f6d1adc3f7fff"
+          }
+        },
+        {
+          "client_id": "526894440758-gngb8v9jkosr3shbd10ja2v2lvi4dd8o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDAqgTcibnHob6x8xNwlQ9VoIK376o3W-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "526894440758-gngb8v9jkosr3shbd10ja2v2lvi4dd8o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
