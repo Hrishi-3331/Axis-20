@@ -31,7 +31,7 @@ public class Splash extends AppCompatActivity {
             }
         };
 
-        new Handler().postDelayed(runnable, 3000);
+        new Handler().postDelayed(runnable, 2500);
 
         animate();
 

@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -38,7 +39,9 @@ public class MainActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
                 switch (menuItem.getItemId()) {
-
+                    case R.id.gallery:
+                        startActivity(new Intent(MainActivity.this, Gallery.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;
