@@ -22,6 +22,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
+import axis.hrishi3331studio.vnit.axis20.Objects.Activity;
+
 public class Gallery extends AppCompatActivity {
 
     private DatabaseReference mref;

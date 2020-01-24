@@ -1,4 +1,4 @@
-package axis.hrishi3331studio.vnit.axis20;
+package axis.hrishi3331studio.vnit.axis20.Objects;
 
 public class Feed {
     private String title;
