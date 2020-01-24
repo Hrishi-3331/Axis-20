@@ -72,6 +72,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.sponsors:
                         startActivity(new Intent(MainActivity.this, Sponsors.class));
                         break;
+
+                    case R.id.sic:
+                        startActivity(new Intent(MainActivity.this, SIC.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;
