@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    tools:context=".Events">
+
+    <LinearLayout
+        android:gravity="center"
+        android:elevation="4dp"
+        android:background="@color/colorPrimary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageButton
+            android:onClick="goBack"
+            android:layout_margin="5dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@mipmap/baseline_arrow_back_white_24"
+            android:background="@android:color/transparent"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="14dp"
+            android:text="Events"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:background="@android:color/transparent"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/white"
+        />
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:elevation="4dp"
+                android:padding="14dp"
+                android:text="AXIS'20 presents you"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="15sp" />
+
+            <ScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/ENL302"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/robotics" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="ROBOTICS AND AUTOMATION"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ECL304"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/construction" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:text="CONSTRUCTION AND DESIGN"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/ECL303"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/igniting" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="IGNITING MINDS"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ECL403"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/school" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="25dp"
+                                android:layout_marginRight="25dp"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="SCHOOL EVENTS"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="180dp"
+                        android:orientation="horizontal"
+                        >
+
+                        <LinearLayout
+                            android:id="@+id/ECL426"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/software" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingBottom="10dp"
+                                android:paddingTop="10dp"
+                                android:text="SOFTWARE AND ELECTRONICS"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ECL415"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:background="@drawable/subject_frame"
+                            android:orientation="vertical">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="0dp"
+                                android:layout_margin="1dp"
+                                android:layout_weight="1"
+                                android:scaleType="centerCrop"
+                                app:srcCompat="@drawable/analytic" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginRight="10dp"
+                                android:paddingBottom="10dp"
+                                android:paddingLeft="10dp"
+                                android:paddingRight="10dp"
+                                android:paddingTop="10dp"
+                                android:text="ANALYTICS AND OTHERS"
+                                android:textAlignment="center"
+                                android:textColor="@android:color/background_light"
+                                android:textStyle="bold" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:elevation="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@color/colorPrimary"
+                        >
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="2dp"
+                            android:background="@android:color/white"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textAlignment="center"
+                            android:textColor="@android:color/white"
+                            android:textStyle="bold"
+                            android:text="AXIS VNIT"
+                            android:padding="16sp"
+                            android:textSize="16sp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </ScrollView>
+
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>
