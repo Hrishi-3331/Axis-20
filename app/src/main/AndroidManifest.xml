@@ -26,7 +26,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".Gallery" />
         <activity android:name=".Events" />
-        <activity android:name=".DetailFeed"></activity>
+        <activity android:name=".DetailFeed" />
+        <activity android:name=".Contact"></activity>
     </application>
 
 </manifest>

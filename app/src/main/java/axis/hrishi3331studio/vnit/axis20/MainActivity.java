@@ -62,6 +62,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.events:
                         startActivity(new Intent(MainActivity.this, Events.class));
                         break;
+
+                    case R.id.contact:
+                        startActivity(new Intent(MainActivity.this, Contact.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;
