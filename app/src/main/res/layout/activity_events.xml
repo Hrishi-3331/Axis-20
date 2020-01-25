@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
-    tools:context=".Events">
+    tools:context=".Events.Events">
 
     <LinearLayout
         android:gravity="center"
@@ -90,7 +90,8 @@
                         >
 
                         <LinearLayout
-                            android:id="@+id/ENL302"
+                            android:onClick="showDetails"
+                            android:id="@+id/rba"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -120,7 +121,8 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ECL304"
+                            android:onClick="showDetails"
+                            android:id="@+id/cad"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -157,7 +159,8 @@
                         >
 
                         <LinearLayout
-                            android:id="@+id/ECL303"
+                            android:onClick="showDetails"
+                            android:id="@+id/igm"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -185,7 +188,8 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ECL403"
+                            android:onClick="showDetails"
+                            android:id="@+id/sce"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -223,7 +227,8 @@
                         >
 
                         <LinearLayout
-                            android:id="@+id/ECL426"
+                            android:onClick="showDetails"
+                            android:id="@+id/sft"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -251,7 +256,8 @@
                         </LinearLayout>
 
                         <LinearLayout
-                            android:id="@+id/ECL415"
+                            android:onClick="showDetails"
+                            android:id="@+id/ana"
                             android:layout_width="0dp"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
