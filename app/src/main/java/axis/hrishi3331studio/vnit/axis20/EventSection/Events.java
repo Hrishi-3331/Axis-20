@@ -1,4 +1,4 @@
-package axis.hrishi3331studio.vnit.axis20.Events;
+package axis.hrishi3331studio.vnit.axis20.EventSection;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

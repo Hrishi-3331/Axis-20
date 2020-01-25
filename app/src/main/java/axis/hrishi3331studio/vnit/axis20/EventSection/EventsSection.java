@@ -1,5 +1,6 @@
-package axis.hrishi3331studio.vnit.axis20.Events;
+package axis.hrishi3331studio.vnit.axis20.EventSection;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -15,6 +16,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
+
+import java.sql.DataTruncation;
 
 import axis.hrishi3331studio.vnit.axis20.Objects.Event;
 import axis.hrishi3331studio.vnit.axis20.R;
@@ -57,6 +60,7 @@ public class EventsSection extends AppCompatActivity {
             @Override
             protected void populateViewHolder(EventViewHolder viewHolder, Event model, int position) {
                 viewHolder.setmView(model.getImage(), model.getTitle());
+                viewHolder.implementListner(EventsSection.this, getRef(position).toString());
             }
         };
 
@@ -84,6 +88,18 @@ public class EventsSection extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        public void implementListner(final Context context, final String id){
+            mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, EventDetails.class);
+                    intent.putExtra("id", id);
+                    context.startActivity(intent);
+                }
+            });
+        }
+
     }
 
     private void setLayout() {

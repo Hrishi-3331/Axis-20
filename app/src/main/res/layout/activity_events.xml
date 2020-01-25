@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
-    tools:context=".Events.Events">
+    tools:context=".EventSection.Events">
 
     <LinearLayout
         android:gravity="center"

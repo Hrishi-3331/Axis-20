@@ -22,7 +22,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
-import axis.hrishi3331studio.vnit.axis20.Events.Events;
+import axis.hrishi3331studio.vnit.axis20.EventSection.Events;
 import axis.hrishi3331studio.vnit.axis20.Objects.Feed;
 
 public class MainActivity extends AppCompatActivity {
