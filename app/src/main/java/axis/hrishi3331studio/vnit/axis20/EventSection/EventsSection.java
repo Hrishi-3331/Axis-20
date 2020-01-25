@@ -28,7 +28,7 @@ public class EventsSection extends AppCompatActivity {
     private TextView title;
     private RecyclerView eventsList;
     private DatabaseReference mRef;
-    private String id;
+    private static String e_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,9 +41,9 @@ public class EventsSection extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        id = intent.getStringExtra("id");
+        e_id = intent.getStringExtra("id");
 
-        mRef = FirebaseDatabase.getInstance().getReference().child("Events").child(id);
+        mRef = FirebaseDatabase.getInstance().getReference().child("Events").child(e_id);
 
         GridLayoutManager manager = new GridLayoutManager(EventsSection.this, 2);
         manager.setSmoothScrollbarEnabled(true);
@@ -60,7 +60,7 @@ public class EventsSection extends AppCompatActivity {
             @Override
             protected void populateViewHolder(EventViewHolder viewHolder, Event model, int position) {
                 viewHolder.setmView(model.getImage(), model.getTitle());
-                viewHolder.implementListner(EventsSection.this, getRef(position).toString());
+                viewHolder.implementListner(EventsSection.this, getRef(position).getKey().toString());
             }
         };
 
@@ -95,6 +95,7 @@ public class EventsSection extends AppCompatActivity {
                 public void onClick(View v) {
                     Intent intent = new Intent(context, EventDetails.class);
                     intent.putExtra("id", id);
+                    intent.putExtra("cat",e_id);
                     context.startActivity(intent);
                 }
             });
@@ -103,7 +104,7 @@ public class EventsSection extends AppCompatActivity {
     }
 
     private void setLayout() {
-        switch (id){
+        switch (e_id){
             case "rba":
                 headerImage.setImageDrawable(getResources().getDrawable(R.drawable.robotics));
                 title.setText("Robotics and Automation");

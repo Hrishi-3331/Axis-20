@@ -1,11 +1,12 @@
 package axis.hrishi3331studio.vnit.axis20.EventSection;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
@@ -14,8 +15,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import android.widget.TextView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import axis.hrishi3331studio.vnit.axis20.R;
 
@@ -23,6 +28,10 @@ public class EventDetails extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private String event_category;
+    private String event_id;
+    private String title;
+    private TextView titlebar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +40,26 @@ public class EventDetails extends AppCompatActivity {
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        titlebar = (TextView)toolbar.findViewById(R.id.header_nav);
+
+        Intent intent = getIntent();
+        event_category = intent.getStringExtra("cat");
+        event_id = intent.getStringExtra("id");
+
+        FirebaseDatabase.getInstance().getReference().child("Events").child(event_category).child(event_id).child("title").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() != null){
+                    title = dataSnapshot.getValue().toString();
+                    titlebar.setText(title);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -51,8 +80,6 @@ public class EventDetails extends AppCompatActivity {
         });
 
     }
-
-
 
     public static class PlaceholderFragment extends Fragment {
 
@@ -90,20 +117,55 @@ public class EventDetails extends AppCompatActivity {
         public Fragment getItem(int position) {
 
             switch (position) {
-                case 0:
-                    return new AboutFragment();
+                case 0:{
+                    Fragment fragment = new AboutFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_id", event_id);
+                    bundle.putString("section", "about");
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
 
-                case 1:
-                    return new StatementFragment();
+                case 1:{
+                    Fragment fragment = new StatementFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_id", event_id);
+                    bundle.putString("section", "statement");
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
 
-                case 2:
-                    return new RulesFragment();
+                case 2:{
+                    Fragment fragment = new RulesFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_id", event_id);
+                    bundle.putString("section", "rules");
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
 
-                case 3:
-                    return new ContactFragment();
+                case 3:{
+                    Fragment fragment = new ContactFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_id", event_id);
+                    bundle.putString("section", "contact");
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
 
-                default:
-                    return new ContactFragment();
+                default: {
+                    Fragment fragment = new ContactFragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("event_category", event_category);
+                    bundle.putString("event_id", event_id);
+                    bundle.putString("section", "contact");
+                    fragment.setArguments(bundle);
+                    return fragment;
+                }
             }
         }
 
