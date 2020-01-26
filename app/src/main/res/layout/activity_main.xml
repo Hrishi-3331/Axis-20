@@ -67,12 +67,31 @@
                 >
 
                 <LinearLayout
+                    android:background="@drawable/main_box"
+                    android:layout_margin="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:orientation="vertical"
                     >
 
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:riv_corner_radius="15dp"
+                        />
+
                 </LinearLayout>
+
+                <TextView
+                    android:textAlignment="center"
+                    android:fontFamily="@font/primetimeregular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@android:color/white"
+                    android:textSize="24sp"
+                    android:text="ABOUT AXIS"
+                    android:padding="14dp"
+                    />
 
                 <android.support.v7.widget.RecyclerView
                     android:background="@color/colorSecondary"

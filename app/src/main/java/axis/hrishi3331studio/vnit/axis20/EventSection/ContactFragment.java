@@ -1,8 +1,14 @@
 package axis.hrishi3331studio.vnit.axis20.EventSection;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -57,57 +63,45 @@ public class ContactFragment extends Fragment {
         FirebaseRecyclerAdapter<Coordinator, CoordinatorViewHolder> adapter = new FirebaseRecyclerAdapter<Coordinator, CoordinatorViewHolder>(Coordinator.class, R.layout.coordinators_box, CoordinatorViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(CoordinatorViewHolder viewHolder, Coordinator model, int position) {
-                viewHolder.setmView(model.getName(), model.getImage(), model.getNumber(), model.getEmail(), model.getSocial());
+                viewHolder.setmView(getActivity(), model.getName(), model.getNumber(), model.getEmail());
             }
         };
 
         coordinators_view.setAdapter(adapter);
     }
 
-    public static class CoordinatorViewHolder extends RecyclerView.ViewHolder{
+    public static class CoordinatorViewHolder extends RecyclerView.ViewHolder {
 
         private View mView;
-        private RoundedImageView image;
         private TextView name;
-        private ImageButton call, mail, social;
+        private ImageButton call, mail;
 
         public CoordinatorViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
-            //image = mView.findViewById(R.id.c_image);
             name = mView.findViewById(R.id.c_name);
             call = mView.findViewById(R.id.c_call);
-            social = mView.findViewById(R.id.c_fb);
             mail = mView.findViewById(R.id.c_mail);
         }
 
-        public void setmView(String name, String image, String mobile, String mail, String social){
+        public void setmView(final Context context, String name, final String mobile, final String mail) {
             this.name.setText(name);
-            //try {
-            //    Picasso.get().load(image).into(this.image);
-            //}
-            //catch (Exception e){
-            //    e.printStackTrace();
-            //}
 //
             call.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
+                    Intent intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+ mobile));
+                    context.startActivity(intent);
                 }
             });
 
             this.mail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                }
-            });
-
-            this.social.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
+                    Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                            "mailto", mail, null));
+                    emailIntent.putExtra(Intent.EXTRA_SUBJECT, "AXIS 20 Event Details Enquiry");
+                    context.startActivity(Intent.createChooser(emailIntent, null));
                 }
             });
 

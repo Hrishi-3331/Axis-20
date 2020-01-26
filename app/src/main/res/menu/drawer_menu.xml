@@ -17,10 +17,6 @@
         android:title="Workshops"
         android:icon="@mipmap/baseline_computer_black_24"/>
 
-    <item android:id="@+id/mun"
-        android:title="MUN"
-        android:icon="@mipmap/baseline_public_black_24"/>
-
     <item android:id="@+id/sic"
         android:title="SIC"
         android:icon="@mipmap/baseline_flight_black_24"/>
