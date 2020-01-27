@@ -1,15 +1,19 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import me.biubiubiu.justifytext.library.JustifyTextView;
+
 public class SIC extends AppCompatActivity {
 
     private TextView head;
-    private TextView content;
+    private JustifyTextView content;
     private LinearLayout contact;
     private LinearLayout text;
 
@@ -19,7 +23,7 @@ public class SIC extends AppCompatActivity {
         setContentView(R.layout.activity_sic);
 
         head = (TextView)findViewById(R.id.sic_head);
-        content = (TextView)findViewById(R.id.sic_content);
+        content = (JustifyTextView) findViewById(R.id.sic_content);
         contact = (LinearLayout)findViewById(R.id.sic_contact);
         text = (LinearLayout)findViewById(R.id.sic_text);
     }
@@ -56,5 +60,33 @@ public class SIC extends AppCompatActivity {
 
     public void goBack(View view){
         finish();
+    }
+
+    public void setClicker(View view){
+        switch (view.getId()){
+            case R.id.c1_call:
+                Intent intent1 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+"8421583622"));
+                startActivity(intent1);
+                break;
+
+            case R.id.c1_mail:
+                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "saurabh.nirwan@axisvnit.org", null));
+                emailIntent.putExtra(Intent.EXTRA_SUBJECT, "AXIS 20 Event Details Enquiry");
+                startActivity(Intent.createChooser(emailIntent, null));
+                break;
+
+            case R.id.c2_call:
+                Intent intent3 = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:"+ "8830314193"));
+                startActivity(intent3);
+                break;
+
+            case R.id.c2_mail:
+                Intent emailIntent2 = new Intent(Intent.ACTION_SENDTO, Uri.fromParts(
+                        "mailto", "ayushi.tiwari@axisvnit.org", null));
+                emailIntent2.putExtra(Intent.EXTRA_SUBJECT, "AXIS 20 Event Details Enquiry");
+                startActivity(Intent.createChooser(emailIntent2, null));
+                break;
+        }
     }
 }

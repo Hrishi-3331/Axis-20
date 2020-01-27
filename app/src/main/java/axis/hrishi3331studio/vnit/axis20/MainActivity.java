@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -77,6 +78,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.sic:
                         startActivity(new Intent(MainActivity.this, SIC.class));
                         break;
+
+                    case R.id.team:
+                        startActivity(new Intent(MainActivity.this, TeamDetails.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;
@@ -115,6 +120,13 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_event_details, menu);
+        return true;
     }
 
     public static class FeedViewHolder extends RecyclerView.ViewHolder{

@@ -36,7 +36,8 @@
             android:name=".EventSection.EventDetails"
             android:label="@string/title_activity_event_details"
             android:theme="@style/AppTheme" />
-        <activity android:name=".rules_fragment"></activity>
+        <activity android:name=".rules_fragment" />
+        <activity android:name=".TeamDetails"></activity>
     </application>
 
 </manifest>

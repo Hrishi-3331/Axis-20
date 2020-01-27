@@ -3,4 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="axis.hrishi3331studio.vnit.axis20.EventSection.EventDetails">
 
+    <item
+        android:id="@+id/navigation_team"
+        android:title="AXIS Team"/>
+
+
 </menu>

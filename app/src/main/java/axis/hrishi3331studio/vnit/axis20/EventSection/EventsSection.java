@@ -106,7 +106,7 @@ public class EventsSection extends AppCompatActivity {
     private void setLayout() {
         switch (e_id){
             case "rba":
-                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.robots));
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.robotics));
                 title.setText("Robotics and Automation");
                 break;
 
