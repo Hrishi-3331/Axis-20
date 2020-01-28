@@ -233,7 +233,6 @@
                     />
 
                 <android.support.v7.widget.RecyclerView
-                    android:background="@color/colorSecondary"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:nestedScrollingEnabled="false"

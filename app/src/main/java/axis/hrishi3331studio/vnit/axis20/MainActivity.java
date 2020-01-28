@@ -82,6 +82,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.team:
                         startActivity(new Intent(MainActivity.this, TeamDetails.class));
                         break;
+
+                    case R.id.workshops:
+                        startActivity(new Intent(MainActivity.this, Workshops.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;

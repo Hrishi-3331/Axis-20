@@ -59,6 +59,10 @@ public class TeamDetails extends AppCompatActivity {
     }
 
 
+    public void goBack(View view){
+        finish();
+    }
+
     public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
         SectionsPagerAdapter(FragmentManager fm) {
