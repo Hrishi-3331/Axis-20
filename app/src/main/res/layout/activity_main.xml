@@ -5,7 +5,7 @@
     android:id="@+id/mDrawer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorSecondary"
+    android:background="@drawable/background_frame"
     android:fitsSystemWindows="true"
     >
 
@@ -43,7 +43,6 @@
                     />
 
             </android.support.v7.widget.Toolbar>
-
 
         </android.support.design.widget.AppBarLayout>
 
