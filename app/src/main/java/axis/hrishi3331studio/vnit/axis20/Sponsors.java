@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ public class Sponsors extends AppCompatActivity {
 
     private DatabaseReference mRef;
     private RecyclerView sponsors_view;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +33,22 @@ public class Sponsors extends AppCompatActivity {
 
         LinearLayoutManager manager = new LinearLayoutManager(Sponsors.this, LinearLayoutManager.VERTICAL, false);
         sponsors_view.setLayoutManager(manager);
+
+        mDialog = new ProgressDialog(Sponsors.this);
+        mDialog.setMessage("Please wait..");
+        mDialog.setTitle("Loading");
+        mDialog.setCanceledOnTouchOutside(false);
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
+        mDialog.show();
         FirebaseRecyclerAdapter<Sponsor, SponsorViewHolder> adapter = new FirebaseRecyclerAdapter<Sponsor, SponsorViewHolder>(Sponsor.class, R.layout.sponsor_layout, SponsorViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(SponsorViewHolder viewHolder, Sponsor model, int position) {
                 viewHolder.setmView(model.getLogo(),model.getTitle(), model.getDescription());
+                mDialog.dismiss();
             }
         };
 

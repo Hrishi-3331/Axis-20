@@ -1,13 +1,18 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView feedView;
     private LinearLayoutManager manager;
     private DatabaseReference mRef;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         mToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayUseLogoEnabled(true);
+
+        mDialog = new ProgressDialog(MainActivity.this);
+        mDialog.setMessage("Please wait..");
+        mDialog.setTitle("Loading");
+        mDialog.setCanceledOnTouchOutside(false);
 
         mRef = FirebaseDatabase.getInstance().getReference().child("Timeline");
 
@@ -98,17 +110,36 @@ public class MainActivity extends AppCompatActivity {
         feedView.setLayoutManager(manager);
         feedView.hasFixedSize();
 
+        if(!haveNetworkConnection()){
+            mDialog.dismiss();
+            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+            builder.setTitle("No Internet Connection")
+                    .setMessage("You need to connect to internet to play. Make sure you have working internet connection!")
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            dialog.dismiss();
+                            finish();
+                        }
+                    }).setCancelable(false);
+
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            Toast.makeText(this, "Internet Connection not available!", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
+        mDialog.show();
         FirebaseRecyclerAdapter<Feed, FeedViewHolder> adapter = new FirebaseRecyclerAdapter<Feed, FeedViewHolder>(Feed.class, R.layout.feed_layout, FeedViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(FeedViewHolder viewHolder, Feed model, int position) {
                 viewHolder.setmView(model.getTitle(), model.getImage(), model.getContent());
                 viewHolder.implementListener(MainActivity.this, getRef(position).getKey());
+                mDialog.dismiss();
             }
         };
 
@@ -168,6 +199,23 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
         }
+    }
+
+    public boolean haveNetworkConnection() {
+        boolean haveConnectedWifi = false;
+        boolean haveConnectedMobile = false;
+
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo[] netInfo = cm.getAllNetworkInfo();
+        for (NetworkInfo ni : netInfo) {
+            if (ni.getTypeName().equalsIgnoreCase("WIFI"))
+                if (ni.isConnected())
+                    haveConnectedWifi = true;
+            if (ni.getTypeName().equalsIgnoreCase("MOBILE"))
+                if (ni.isConnected())
+                    haveConnectedMobile = true;
+        }
+        return haveConnectedWifi || haveConnectedMobile;
     }
 
 }

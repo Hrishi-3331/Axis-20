@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20.EventSection;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -25,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.squareup.picasso.Picasso;
 
+import axis.hrishi3331studio.vnit.axis20.MainActivity;
 import axis.hrishi3331studio.vnit.axis20.R;
 
 public class EventDetails extends AppCompatActivity {
@@ -37,6 +39,7 @@ public class EventDetails extends AppCompatActivity {
     private TextView titlebar;
     private ImageView details_image;
     private String link;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

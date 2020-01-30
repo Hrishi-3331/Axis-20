@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,7 @@ public class TeamDetails extends AppCompatActivity {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ViewPager mViewPager;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,11 @@ public class TeamDetails extends AppCompatActivity {
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
+
+        mDialog = new ProgressDialog(TeamDetails.this);
+        mDialog.setMessage("Please wait..");
+        mDialog.setTitle("Loading");
+        mDialog.setCanceledOnTouchOutside(false);
     }
 
     public static class PlaceholderFragment extends Fragment {

@@ -104,7 +104,7 @@
                                 android:layout_margin="1dp"
                                 android:layout_weight="1"
                                 android:scaleType="centerCrop"
-                                app:srcCompat="@drawable/robotics" />
+                                app:srcCompat="@drawable/robots" />
 
                             <TextView
                                 android:layout_width="match_parent"

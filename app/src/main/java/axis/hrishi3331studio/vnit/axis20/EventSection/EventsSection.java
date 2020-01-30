@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20.EventSection;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -29,6 +30,7 @@ public class EventsSection extends AppCompatActivity {
     private RecyclerView eventsList;
     private DatabaseReference mRef;
     private static String e_id;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +51,26 @@ public class EventsSection extends AppCompatActivity {
         manager.setSmoothScrollbarEnabled(true);
         eventsList.setLayoutManager(manager);
 
+        mDialog = new ProgressDialog(EventsSection.this);
+        mDialog.setMessage("Please wait..");
+        mDialog.setTitle("Loading");
+        mDialog.setCanceledOnTouchOutside(false);
+
         setLayout();
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-
+        mDialog.show();
         FirebaseRecyclerAdapter<Event, EventViewHolder> adapter = new FirebaseRecyclerAdapter<Event, EventViewHolder>(Event.class, R.layout.eventframe, EventViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(EventViewHolder viewHolder, Event model, int position) {
                 viewHolder.setmView(model.getImage(), model.getTitle());
                 viewHolder.implementListner(EventsSection.this, getRef(position).getKey().toString());
+                mDialog.dismiss();
             }
         };
-
         eventsList.setAdapter(adapter);
     }
 
@@ -106,7 +113,7 @@ public class EventsSection extends AppCompatActivity {
     private void setLayout() {
         switch (e_id){
             case "rba":
-                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.robotic));
+                headerImage.setImageDrawable(getResources().getDrawable(R.drawable.robots));
                 title.setText("Robotics and Automation");
                 break;
 

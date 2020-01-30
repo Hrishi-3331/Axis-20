@@ -31,15 +31,15 @@ public class Splash extends AppCompatActivity {
             }
         };
 
-        new Handler().postDelayed(runnable, 2500);
+        new Handler().postDelayed(runnable, 2000);
 
         animate();
 
     }
 
     private void animate() {
-        splash_image.animate().alpha(1).setDuration(1400);
+        splash_image.animate().alpha(1).setDuration(2000);
         loader.animate().scaleXBy(300).setDuration(3000);
-        logo.animate().rotation(100).setDuration(3000);
+        logo.animate().rotation(150).setDuration(3000);
     }
 }

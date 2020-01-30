@@ -1,5 +1,6 @@
 package axis.hrishi3331studio.vnit.axis20;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ public class Workshops extends AppCompatActivity {
 
     private RecyclerView workshop_view;
     private DatabaseReference mRef;
+    private ProgressDialog mDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +34,22 @@ public class Workshops extends AppCompatActivity {
 
         LinearLayoutManager manager = new LinearLayoutManager(Workshops.this, LinearLayoutManager.VERTICAL, false);
         workshop_view.setLayoutManager(manager);
+
+        mDialog = new ProgressDialog(Workshops.this);
+        mDialog.setMessage("Please wait..");
+        mDialog.setTitle("Loading");
+        mDialog.setCanceledOnTouchOutside(false);
     }
 
     @Override
     protected void onStart() {
+        mDialog.show();
         super.onStart();
         FirebaseRecyclerAdapter<Workshop, WorkshopViewHolder> adapter = new FirebaseRecyclerAdapter<Workshop, WorkshopViewHolder>(Workshop.class, R.layout.workshop_box, WorkshopViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(WorkshopViewHolder viewHolder, Workshop model, int position) {
                 viewHolder.setmView(Workshops.this, model.getTitle(),model.getDate(), model.getVenue(), model.getImage());
+                mDialog.dismiss();
             }
         };
 
