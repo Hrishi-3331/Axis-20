@@ -2,6 +2,7 @@ package axis.hrishi3331studio.vnit.axis20;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -48,7 +49,7 @@ public class Workshops extends AppCompatActivity {
         FirebaseRecyclerAdapter<Workshop, WorkshopViewHolder> adapter = new FirebaseRecyclerAdapter<Workshop, WorkshopViewHolder>(Workshop.class, R.layout.workshop_box, WorkshopViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(WorkshopViewHolder viewHolder, Workshop model, int position) {
-                viewHolder.setmView(Workshops.this, model.getTitle(),model.getDate(), model.getVenue(), model.getImage());
+                viewHolder.setmView(Workshops.this, model.getTitle(),model.getDate(), model.getVenue(), model.getImage(),getRef(position).getKey().toString());
                 mDialog.dismiss();
             }
         };
@@ -73,7 +74,7 @@ public class Workshops extends AppCompatActivity {
             w_venue = mView.findViewById(R.id.workshop_venue);
         }
 
-        public void setmView(Context context, String title, String date, String venue, String image){
+        public void setmView(final Context context, String title, String date, String venue, String image, final String id){
             w_title.setText(title);
             w_date.setText(date);
             w_venue.setText(venue);
@@ -82,6 +83,15 @@ public class Workshops extends AppCompatActivity {
             }catch (Exception e){
                 e.printStackTrace();
             }
+
+            mView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, WorkshopDetails.class);
+                    intent.putExtra("workshop_id", id);
+                    context.startActivity(intent);
+                }
+            });
         }
 
     }
