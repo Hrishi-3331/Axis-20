@@ -38,7 +38,7 @@ public class Splash extends AppCompatActivity {
     }
 
     private void animate() {
-        splash_image.animate().alpha(1).setDuration(2000);
+        splash_image.animate().alpha(1).setStartDelay(1000).setDuration(2000);
         loader.animate().scaleXBy(300).setDuration(3000);
         logo.animate().rotation(150).setDuration(3000);
     }

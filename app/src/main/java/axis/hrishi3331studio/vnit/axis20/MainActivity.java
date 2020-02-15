@@ -17,20 +17,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.makeramen.roundedimageview.RoundedImageView;
 import com.squareup.picasso.Picasso;
 
 import axis.hrishi3331studio.vnit.axis20.EventSection.Events;
 import axis.hrishi3331studio.vnit.axis20.Objects.Feed;
+import axis.hrishi3331studio.vnit.axis20.Objects.Notification;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,10 +94,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(new Intent(MainActivity.this, Sponsors.class));
                         break;
 
-                    case R.id.sic:
-                        startActivity(new Intent(MainActivity.this, SIC.class));
-                        break;
-
                     case R.id.team:
                         startActivity(new Intent(MainActivity.this, TeamDetails.class));
                         break;
@@ -109,6 +112,27 @@ public class MainActivity extends AppCompatActivity {
         manager.setStackFromEnd(true);
         feedView.setLayoutManager(manager);
         feedView.hasFixedSize();
+
+        final ImageView promo_image = (RoundedImageView)findViewById(R.id.promo_image);
+
+        FirebaseDatabase.getInstance().getReference().child("promo").addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() != null){
+                    String url = dataSnapshot.getValue().toString();
+                    try {
+                        Picasso.get().load(url).into(promo_image);
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
         if(!haveNetworkConnection()){
             mDialog.dismiss();
@@ -154,6 +178,11 @@ public class MainActivity extends AppCompatActivity {
         if (mToggle.onOptionsItemSelected(item)){
             return true;
         }
+
+        if (id == R.id.notifications){
+            startActivity(new Intent(MainActivity.this, Notifications.class));
+        }
+
         return super.onOptionsItemSelected(item);
     }
 
@@ -218,4 +247,32 @@ public class MainActivity extends AppCompatActivity {
         return haveConnectedWifi || haveConnectedMobile;
     }
 
+    @Override
+    public void onBackPressed() {
+        android.app.AlertDialog.Builder builder = new android.app.AlertDialog.Builder(MainActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View DialogLayout = inflater.inflate(R.layout.exit_dialog, null);
+        builder.setView(DialogLayout);
+
+        Button ok = (Button) DialogLayout.findViewById(R.id.btn_ok);
+        Button cancel = (Button) DialogLayout.findViewById(R.id.btn_cancel);
+
+        final android.app.AlertDialog exit_dialog = builder.create();
+
+        ok.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+        cancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                exit_dialog.dismiss();
+            }
+        });
+
+        exit_dialog.show();
+    }
 }

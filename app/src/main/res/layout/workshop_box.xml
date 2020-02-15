@@ -15,9 +15,9 @@
 
         <ImageView
             android:layout_width="140dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:adjustViewBounds="true"
-            android:maxHeight="180dp"
+            android:scaleType="fitXY"
             android:id="@+id/workshop_image"
             />
 

@@ -3,9 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="axis.hrishi3331studio.vnit.axis20.EventSection.EventDetails">
 
-    <item
-        android:id="@+id/navigation_team"
-        android:title="AXIS Team"/>
+    <item android:id="@+id/notifications"
+        android:icon="@mipmap/baseline_notifications_white_24"
+        app:showAsAction="always"
+        android:title="Notifications"
+        android:iconTint="@android:color/white"/>
+
 
 
 </menu>
