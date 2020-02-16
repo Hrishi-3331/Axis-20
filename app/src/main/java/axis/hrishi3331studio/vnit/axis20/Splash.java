@@ -16,6 +16,7 @@ public class Splash extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.fade_in, R.anim.fade_out);
         setContentView(R.layout.activity_splash);
 
         splash_image = (ImageView)findViewById(R.id.splash_anim);
@@ -31,14 +32,13 @@ public class Splash extends AppCompatActivity {
             }
         };
 
-        new Handler().postDelayed(runnable, 2000);
+        new Handler().postDelayed(runnable, 2500);
 
         animate();
 
     }
 
     private void animate() {
-        splash_image.animate().alpha(1).setStartDelay(1000).setDuration(2000);
         loader.animate().scaleXBy(300).setDuration(3000);
         logo.animate().rotation(150).setDuration(3000);
     }

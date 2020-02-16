@@ -7,16 +7,18 @@ public class TeamMember {
     private String mail;
     private String contact;
     private String social;
+    private String position;
 
     public TeamMember() {
     }
 
-    public TeamMember(String name, String image, String mail, String contact, String social) {
+    public TeamMember(String name, String image, String mail, String contact, String social, String position) {
         this.name = name;
         this.image = image;
         this.mail = mail;
         this.contact = contact;
         this.social = social;
+        this.position = position;
     }
 
     public String getName() {
@@ -57,5 +59,13 @@ public class TeamMember {
 
     public void setSocial(String social) {
         this.social = social;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
     }
 }

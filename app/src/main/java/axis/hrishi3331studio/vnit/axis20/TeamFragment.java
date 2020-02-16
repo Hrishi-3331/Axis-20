@@ -56,7 +56,7 @@ public class TeamFragment extends Fragment {
         FirebaseRecyclerAdapter<TeamMember, TeamViewHolder> adapter = new FirebaseRecyclerAdapter<TeamMember, TeamViewHolder>(TeamMember.class, R.layout.team_member_box_layout, TeamViewHolder.class, mRef) {
             @Override
             protected void populateViewHolder(TeamViewHolder viewHolder, TeamMember model, int position) {
-                viewHolder.setmView(model.getName(), model.getImage());
+                viewHolder.setmView(model.getName(), model.getImage(),model.getPosition());
             }
         };
 
@@ -68,16 +68,19 @@ public class TeamFragment extends Fragment {
         private View mView;
         private TextView nameView;
         private ImageView photoView;
+        private TextView positionView;
 
         public TeamViewHolder(@NonNull View itemView) {
             super(itemView);
             mView = itemView;
             nameView = mView.findViewById(R.id.member_name);
             photoView = mView.findViewById(R.id.member_image);
+            positionView = mView.findViewById(R.id.member_position);
         }
 
-        public void setmView(String name, String image){
+        public void setmView(String name, String image, String position){
             nameView.setText(name);
+            positionView.setText(position);
             try {
                 Picasso.get().load(image).into(photoView);
             }catch (Exception e){

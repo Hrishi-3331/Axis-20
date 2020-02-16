@@ -1,11 +1,13 @@
 package axis.hrishi3331studio.vnit.axis20;
 
 import android.app.ProgressDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -274,5 +276,42 @@ public class MainActivity extends AppCompatActivity {
         });
 
         exit_dialog.show();
+    }
+
+    public void openSocial(View view){
+        Intent intent;
+        switch (view.getId()){
+            case R.id.btn_fb:
+                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/axisvnit"));
+                try {
+                    startActivity(intent);
+                }
+                catch (ActivityNotFoundException e){
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://facebook.com/axisvnit")));
+                }
+                break;
+
+            case R.id.btn_insta:
+                Uri uri = Uri.parse("http://instagram.com/_u/axis_vnit");
+                Intent likeIng = new Intent(Intent.ACTION_VIEW, uri);
+
+                likeIng.setPackage("com.instagram.android");
+
+                try {
+                    startActivity(likeIng);
+                } catch (ActivityNotFoundException e) {
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("http://instagram.com/axis_vnit")));
+                }
+                break;
+
+            case R.id.btn_web:
+                String url = "http://www.axisvnit.org";
+                Intent i = new Intent(Intent.ACTION_VIEW);
+                i.setData(Uri.parse(url));
+                startActivity(i);
+                break;
+        }
     }
 }

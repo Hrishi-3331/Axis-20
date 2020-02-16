@@ -15,13 +15,12 @@
         android:layout_gravity="center">
 
         <ImageView
-            android:src="@drawable/whitehead"
+            android:src="@drawable/whiteheadc"
             android:id="@+id/user_header_image"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:adjustViewBounds="true"
             android:layout_marginBottom="10dp"/>
-
 
     </LinearLayout>
 

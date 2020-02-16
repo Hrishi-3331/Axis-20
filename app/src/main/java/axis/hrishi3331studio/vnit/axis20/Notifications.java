@@ -26,7 +26,7 @@ public class Notifications extends AppCompatActivity {
 
         nView = (RecyclerView)findViewById(R.id.notifications_view);
         mRef = FirebaseDatabase.getInstance().getReference().child("Notifications");
-        LinearLayoutManager manager = new LinearLayoutManager(Notifications.this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new LinearLayoutManager(Notifications.this, LinearLayoutManager.VERTICAL, true);
         nView.setLayoutManager(manager);
     }
 

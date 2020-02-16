@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -31,7 +32,7 @@ public class Sponsors extends AppCompatActivity {
         mRef = FirebaseDatabase.getInstance().getReference().child("sponsors");
         sponsors_view = (RecyclerView)findViewById(R.id.sponsors_view);
 
-        LinearLayoutManager manager = new LinearLayoutManager(Sponsors.this, LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager manager = new GridLayoutManager(Sponsors.this, 2);
         sponsors_view.setLayoutManager(manager);
 
         mDialog = new ProgressDialog(Sponsors.this);

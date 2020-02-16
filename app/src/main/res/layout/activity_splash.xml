@@ -25,12 +25,11 @@
 
     <ImageView
         android:layout_gravity="center"
-        android:alpha="0"
         android:id="@+id/splash_anim"
         android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:src="@drawable/splashhead"
+        android:src="@drawable/splashheadc"
         />
 
     <LinearLayout

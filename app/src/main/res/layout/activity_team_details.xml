@@ -28,7 +28,6 @@
                 android:layout_margin="5dp"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@mipmap/baseline_arrow_back_white_24"
                 android:background="@android:color/transparent"
                 />
 
@@ -78,13 +77,13 @@
                 android:id="@+id/tabItem3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="WEB" />
+                android:text="APP/WEB" />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/tabItem4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="APP" />
+                android:text="PROFESSORS" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.AppBarLayout>
