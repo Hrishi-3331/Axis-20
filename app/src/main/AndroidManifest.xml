@@ -16,8 +16,7 @@
         android:roundIcon="@drawable/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Splash">
-        </activity>
+        <activity android:name=".Splash" />
         <activity android:name=".MainActivity" />
         <activity android:name=".Gallery" />
         <activity android:name=".EventSection.Events" />
@@ -42,6 +41,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".Exhibitions" />
+        <activity android:name=".GuestLectures" />
+        <activity android:name=".ExhibitionDetails"></activity>
     </application>
 
 </manifest>

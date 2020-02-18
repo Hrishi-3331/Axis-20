@@ -103,6 +103,14 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.workshops:
                         startActivity(new Intent(MainActivity.this, Workshops.class));
                         break;
+
+                    case R.id.exhibitions:
+                        startActivity(new Intent(MainActivity.this, Exhibitions.class));
+                        break;
+
+                    case R.id.lectures:
+                        startActivity(new Intent(MainActivity.this, GuestLectures.class));
+                        break;
                 }
                 mDrawer.closeDrawer(GravityCompat.START);
                 return false;
