@@ -70,7 +70,7 @@ public class Events extends AppCompatActivity {
         public void setmView(String id, String image){
             switch (id){
                 case "rba":
-                    title = "Robotics and Automation";
+                    title = "Automation and Robotics";
                     break;
 
                 case "cad":
@@ -90,7 +90,7 @@ public class Events extends AppCompatActivity {
                     break;
 
                 case "ana":
-                    title = "Analytics and Management";
+                    title = "Management and Analytics";
                     break;
             }
             event_name.setText(title);

@@ -290,14 +290,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent;
         switch (view.getId()){
             case R.id.btn_fb:
-                    intent = new Intent(Intent.ACTION_VIEW, Uri.parse("fb://facewebmodal/f?href=https://www.facebook.com/axisvnit"));
-                try {
-                    startActivity(intent);
-                }
-                catch (ActivityNotFoundException e){
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("http://facebook.com/axisvnit")));
-                }
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://facebook.com/axisvnit")));
                 break;
 
             case R.id.btn_insta:

@@ -104,14 +104,6 @@ public class TeamDetails extends AppCompatActivity {
                     return fragment;
                 }
 
-                case 3:{
-                    Fragment fragment = new TeamFragment();
-                    Bundle bundle = new Bundle();
-                    bundle.putString("team_category", "app");
-                    fragment.setArguments(bundle);
-                    return fragment;
-                }
-
                 default: {
                     Fragment fragment = new TeamFragment();
                     Bundle bundle = new Bundle();
@@ -124,7 +116,7 @@ public class TeamDetails extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 4;
+            return 3;
         }
     }
 }

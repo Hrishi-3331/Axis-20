@@ -1,12 +1,15 @@
 package axis.hrishi3331studio.vnit.axis20;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -26,6 +29,7 @@ public class DetailFeed extends AppCompatActivity {
     private TextView postTitle, postDescription;
     private ImageView postImage;
     private TextView Description;
+    private Button FeedButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,7 @@ public class DetailFeed extends AppCompatActivity {
         postTitle = (TextView)findViewById(R.id.title_detail_feed);
         Description = (TextView)findViewById(R.id.content_detail_feed);
         postImage = (ImageView)findViewById(R.id.image_detail_feed);
+        FeedButton = (Button)findViewById(R.id.feed_button);
 
         updateView();
     }
@@ -77,6 +82,29 @@ public class DetailFeed extends AppCompatActivity {
                     Picasso.get().load(dataSnapshot.getValue().toString()).into(postImage);
                 }catch (Exception e){
                     e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+        mRef.child("link").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull final DataSnapshot dataSnapshot) {
+                if (dataSnapshot.getValue() != null){
+                    FeedButton.setVisibility(View.VISIBLE);
+                    FeedButton.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            String link = dataSnapshot.getValue().toString();
+                            Intent i = new Intent(Intent.ACTION_VIEW);
+                            i.setData(Uri.parse(link));
+                            startActivity(i);
+                        }
+                    });
                 }
             }
 

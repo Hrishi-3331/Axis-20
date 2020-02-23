@@ -5,15 +5,17 @@ public class Feed {
     private String image;
     private String category;
     private String content;
+    private String link;
 
     public Feed() {
     }
 
-    public Feed(String title, String image, String category, String content) {
+    public Feed(String title, String image, String category, String content, String link) {
         this.title = title;
         this.image = image;
         this.category = category;
         this.content = content;
+        this.link = link;
     }
 
     public String getTitle() {
@@ -46,5 +48,13 @@ public class Feed {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 }

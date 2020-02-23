@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/open"
+    android:background="@drawable/axis"
     android:layout_height="match_parent"
     tools:context=".SplashStart">
 
@@ -21,7 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="Lets begin the journey of innovation..."
+        android:text="Let's begin the journey of innovation..."
         android:textAlignment="center"
         android:textColor="@android:color/background_light"
         android:textSize="18sp"
